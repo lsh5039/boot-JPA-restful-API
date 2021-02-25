@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -16,8 +19,10 @@ public class Board extends BaseTimeEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardPk;
 
+
     @Column(nullable = false)
     private String title;
+
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
