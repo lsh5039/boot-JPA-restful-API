@@ -46,16 +46,6 @@ public class BoardApiController {
                 return msg;
             };
 
-
-
-
-
-
-
-
-
-
-
         return String.valueOf(boardService.boardSave(dto));
     }
 

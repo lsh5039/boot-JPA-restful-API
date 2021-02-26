@@ -1,3 +1,40 @@
 {{>layout/header}}
-    <h1>index page</h1>
+
+
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/board" role="button" class="btn btn-primary">글 쓰기</a>
+            </div>
+        </div>
+        <br>
+        <table class="table table-horizontal table-bordered" style="text-align: center">
+            <thead class="thead-strong">
+                <tr>
+                    <th>No</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>수정일</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#boardList}}
+                <tr>
+                    <td>{{boardPk}}</td>
+                    <td>{{title}}</td>
+                    <td>lorem</td>
+                    <td>{{mDt}}</td>
+                </tr>
+
+            {{/boardList}}
+
+            </tbody>
+
+
+        </table>
+    </div>
+
+
+
 {{>layout/footer}}

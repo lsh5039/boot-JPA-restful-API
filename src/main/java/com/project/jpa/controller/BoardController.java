@@ -15,7 +15,9 @@ public class BoardController {
 
 
     @GetMapping("/")
-    public String goIndex(){
+    public String goIndex(Model model){
+        model.addAttribute("boardList", boardService.getBoardList());
+
 
         return "index";
     }
