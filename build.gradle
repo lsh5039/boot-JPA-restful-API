@@ -2,11 +2,12 @@ plugins {
     id 'org.springframework.boot' version '2.4.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id 'war'
+    /*id 'war'*/
     /*all {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }*/
 }
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -29,6 +30,8 @@ dependencies {
     implementation group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'com.h2database:h2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.4.3'
+    implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.2'
 
     /*implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'*/
     //implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '7.0.1.Final'
@@ -37,7 +40,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    compileOnly  'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
 
