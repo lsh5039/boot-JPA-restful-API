@@ -13,7 +13,7 @@ cache:
     - $HOME/.gradle
 before_install:
   - chmod +x gradlew
-script: ".gradlew clean build"
+#script: ".gradlew clean build" 얘가 안되네
 
 # CI 실행 완료시 메일로 알람
 notifications:
