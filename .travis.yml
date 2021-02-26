@@ -1,26 +1,18 @@
 language: java
 jdk:
   - openjdk8
-  branches:
-    only:
-      - cache:
 
-    #Travis CI server home
-#    cache:
-#      directories:
-#        - '$HOME/.m2/repository'
-#        - '$HOME/.gradle'
-#
-#    before_install:
-#        - chmod +x gradlew
-#
-#    script: "./gradlew clean build"
+branches:
+  only:
+    - master
 
+# Travis CI 서버의 Home
+cache:
+  directories:
+    - $HOME/.m2
 
-    #CI 실행 완료 알림
-    notifications:
-      email:
-        recipients:
-          - lsh503984@gmail.com
-
-    #add code..
+# CI 실행 완료시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - lsh503984@gmail.com
