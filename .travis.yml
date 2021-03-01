@@ -20,3 +20,21 @@ notifications:
   email:
     recipients:
       - lsh503984@gmail.com
+
+before_deploy:
+  - zip -r freelec-springboot2-webservice *
+  - mkdir -p deploy
+  - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo sttings에 설정값
+
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정값
+
+    bucket: freelec-hoon-build #s3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일접근을 private
+    local_dir: deploy #before_deploy에 생성 디렉토리
+    wait-until-deployed: true
