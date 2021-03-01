@@ -15,11 +15,7 @@ before_install:
   - chmod +x gradlew
 #script: ".gradlew clean build" 얘가 안되네
 
-# CI 실행 완료시 메일로 알람
-notifications:
-  email:
-    recipients:
-      - lsh503984@gmail.com
+
 
 before_deploy:
   - zip -r freelec-springboot2-webservice *
@@ -38,3 +34,25 @@ deploy:
     acl: private # zip 파일접근을 private
     local_dir: deploy #before_deploy에 생성 디렉토리
     wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo sttings에 설정값
+
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정값
+
+    bucket: freelec-hoon-build #s3 버킷
+    key: freelec-springboot2-webservice.zip #빌드 파일 압축전달
+
+    bundle_type: zip #압축 확장자
+    application: freelec-springboot2-webservice
+
+    deployment_group: freelec-springboot2-webservice-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+
+    # CI 실행 완료시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - lsh503984@gmail.com
